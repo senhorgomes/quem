@@ -31,12 +31,13 @@ import {
 import {
   CategoryCreate,
   CategoryEdit,
-  CategoryList,
+  EmployeeList,
   CategoryShow,
-} from "./pages/categories";
+} from "./pages/employees";
 import { supabaseClient } from "./utility";
 
 function App() {
+
   return (
     <BrowserRouter>
       <GitHubBanner />
@@ -53,21 +54,21 @@ function App() {
               notificationProvider={notificationProvider}
               resources={[
                 {
-                  name: "blog_posts",
-                  list: "/blog-posts",
-                  create: "/blog-posts/create",
-                  edit: "/blog-posts/edit/:id",
-                  show: "/blog-posts/show/:id",
+                  name: "team",
+                  list: "/team",
+                  // create: "/blog-posts/create",
+                  // edit: "/blog-posts/edit/:id",
+                  // show: "/blog-posts/show/:id",
                   meta: {
                     canDelete: true,
                   },
                 },
                 {
-                  name: "categories",
-                  list: "/categories",
-                  create: "/categories/create",
-                  edit: "/categories/edit/:id",
-                  show: "/categories/show/:id",
+                  name: "employees",
+                  list: "/employees",
+                  // create: "/categories/create",
+                  // edit: "/categories/edit/:id",
+                  // show: "/categories/show/:id",
                   meta: {
                     canDelete: true,
                   },
@@ -76,7 +77,7 @@ function App() {
               options={{
                 syncWithLocation: true,
                 warnWhenUnsavedChanges: true,
-                projectId: "kog5iO-ZeQRh9-K1Zrlz",
+                // projectId: "kog5iO-ZeQRh9-K1Zrlz",
               }}
             >
               <Routes>
@@ -91,16 +92,16 @@ function App() {
                 >
                   <Route
                     index
-                    element={<NavigateToResource resource="blog_posts" />}
+                    element={<NavigateToResource resource="team" />}
                   />
-                  <Route path="/blog-posts">
+                  <Route path="/team">
                     <Route index element={<BlogPostList />} />
                     <Route path="create" element={<BlogPostCreate />} />
                     <Route path="edit/:id" element={<BlogPostEdit />} />
                     <Route path="show/:id" element={<BlogPostShow />} />
                   </Route>
-                  <Route path="/categories">
-                    <Route index element={<CategoryList />} />
+                  <Route path="/employees">
+                    <Route index element={<EmployeeList />} />
                     <Route path="create" element={<CategoryCreate />} />
                     <Route path="edit/:id" element={<CategoryEdit />} />
                     <Route path="show/:id" element={<CategoryShow />} />
