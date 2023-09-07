@@ -15,7 +15,7 @@ export const EmployeeList: React.FC<IResourceComponentsProps> = () => {
     const { dataGridProps } = useDataGrid();
 
     const { data: positionData, isLoading: positionIsLoading } = useMany({
-        resource: "position",
+        resource: "positions",
         ids: dataGridProps?.rows?.map((item: any) => item?.position_id) ?? [],
         queryOptions: {
             enabled: !!dataGridProps?.rows,
@@ -23,12 +23,13 @@ export const EmployeeList: React.FC<IResourceComponentsProps> = () => {
     });
 
     const { data: teamData, isLoading: teamIsLoading } = useMany({
-        resource: "team",
+        resource: "teams",
         ids: dataGridProps?.rows?.map((item: any) => item?.team_id) ?? [],
         queryOptions: {
             enabled: !!dataGridProps?.rows,
         },
     });
+    console.log(positionData)
 
     const columns = React.useMemo<GridColDef[]>(
         () => [
@@ -63,7 +64,15 @@ export const EmployeeList: React.FC<IResourceComponentsProps> = () => {
                 field: "position_id",
                 flex: 1,
                 headerName: "Position",
+                valueGetter: ({row}) => row?.position_id,
                 minWidth: 300,
+                renderCell: function render({value}){
+                    return positionIsLoading ? (
+                        <>Loading...</>
+                    ) : (
+                        positionData?.data?.find((item) => item.id === value)?.position_name
+                    )
+                }
             },
             {
                 field: "email",

@@ -54,8 +54,8 @@ function App() {
               notificationProvider={notificationProvider}
               resources={[
                 {
-                  name: "team",
-                  list: "/team",
+                  name: "teams",
+                  list: "/teams",
                   // create: "/blog-posts/create",
                   // edit: "/blog-posts/edit/:id",
                   // show: "/blog-posts/show/:id",
@@ -92,9 +92,9 @@ function App() {
                 >
                   <Route
                     index
-                    element={<NavigateToResource resource="team" />}
+                    element={<NavigateToResource resource="teams" />}
                   />
-                  <Route path="/team">
+                  <Route path="/teams">
                     <Route index element={<BlogPostList />} />
                     <Route path="create" element={<BlogPostCreate />} />
                     <Route path="edit/:id" element={<BlogPostEdit />} />
