@@ -94,7 +94,15 @@ export const EmployeeList: React.FC<IResourceComponentsProps> = () => {
                 field: "team_id",
                 flex: 1,
                 headerName: "Team",
+                valueGetter: ({row}) => row?.team_id,
                 minWidth: 300,
+                renderCell: function render({value}){
+                    return teamIsLoading ? (
+                        <>Loading...</>
+                    ) : (
+                        teamData?.data?.find((item) => item.id === value)?.team_name
+                    )
+                }
             },
             {
                 field: "actions",
