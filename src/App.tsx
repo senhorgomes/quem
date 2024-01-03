@@ -1,4 +1,4 @@
-import { Authenticated, GitHubBanner, Refine } from "@refinedev/core";
+import { Authenticated, Refine } from "@refinedev/core";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 
 import {
@@ -29,7 +29,7 @@ import {
   BlogPostShow,
 } from "./pages/blog-posts";
 import {
-  CategoryCreate,
+  EmployeeCreate,
   CategoryEdit,
   EmployeeList,
   CategoryShow,
@@ -40,7 +40,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      <GitHubBanner />
       <RefineKbarProvider>
         <ColorModeContextProvider>
           <CssBaseline />
@@ -66,7 +65,7 @@ function App() {
                 {
                   name: "employees",
                   list: "/employees",
-                  // create: "/categories/create",
+                  create: "/employees/create",
                   // edit: "/categories/edit/:id",
                   // show: "/categories/show/:id",
                   meta: {
@@ -102,7 +101,7 @@ function App() {
                   </Route>
                   <Route path="/employees">
                     <Route index element={<EmployeeList />} />
-                    <Route path="create" element={<CategoryCreate />} />
+                    <Route path="create" element={<EmployeeCreate />} />
                     <Route path="edit/:id" element={<CategoryEdit />} />
                     <Route path="show/:id" element={<CategoryShow />} />
                   </Route>
@@ -122,8 +121,8 @@ function App() {
                         type="login"
                         formProps={{
                           defaultValues: {
-                            email: "info@refine.dev",
-                            password: "refine-supabase",
+                            email: "test@test.com",
+                            password: "testing",
                           },
                         }}
                       />

@@ -29,7 +29,7 @@ export const EmployeeList: React.FC<IResourceComponentsProps> = () => {
             enabled: !!dataGridProps?.rows,
         },
     });
-    console.log(positionData)
+    console.log(teamData)
 
     const columns = React.useMemo<GridColDef[]>(
         () => [
