@@ -7,6 +7,7 @@ import {
   notificationProvider,
   RefineSnackbarProvider,
   ThemedLayoutV2,
+  ThemedTitleV2,
 } from "@refinedev/mui";
 
 import CssBaseline from "@mui/material/CssBaseline";
@@ -35,6 +36,7 @@ import {
   CategoryShow,
 } from "./pages/employees";
 import { supabaseClient } from "./utility";
+import { Title } from "./components";
 
 function App() {
 
@@ -59,7 +61,7 @@ function App() {
                   // edit: "/blog-posts/edit/:id",
                   // show: "/blog-posts/show/:id",
                   meta: {
-                    canDelete: true,
+                    canDeblete: true,
                   },
                 },
                 {
@@ -83,7 +85,14 @@ function App() {
                 <Route
                   element={
                     <Authenticated fallback={<CatchAllNavigate to="/login" />}>
-                      <ThemedLayoutV2 Header={() => <Header sticky />}>
+                      <ThemedLayoutV2 Title={({ collapsed }) => (
+          <ThemedTitleV2
+            // collapsed is a boolean value that indicates whether the <Sidebar> is collapsed or not
+            collapsed={collapsed}
+            // icon={collapsed ? <MySmallIcon /> : <MyLargeIcon />}
+            text="Quem"
+          />
+        )} Header={() => <Header sticky />}>
                         <Outlet />
                       </ThemedLayoutV2>
                     </Authenticated>
